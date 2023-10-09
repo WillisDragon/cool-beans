@@ -5,6 +5,7 @@
 # Hint: use the slice operator
 
 dna = 'ATAGCGAATATCTCTCATGAGAGGGAA'
+print(dna[:3], dna[3:6], dna[6:9], dna[9:12], dna[12:15], dna[15:18], dna[18:21], dna[21:24], dna[24:27])
 
 
 """
