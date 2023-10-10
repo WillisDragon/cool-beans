@@ -1,3 +1,4 @@
+"""
 # 23fizzbuzz.py
 
 # Write a program that prints the numbers from 1 to 100
@@ -6,6 +7,16 @@
 # For numbers which are multiples of both 3 and 5 print “FizzBuzz”
 
 # Note: this is a common interview question
+"""
+for num in range(1, 101):
+	string = ""
+	if num % 3 == 0:
+		string = string + "Fizz"
+	if num % 5 == 0:
+		string = string + "Buzz"
+	if num % 3 != 0 and num % 5 != 0:
+		string = string + str(num)
+	print(string)
 
 
 """
