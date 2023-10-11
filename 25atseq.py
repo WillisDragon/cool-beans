@@ -18,7 +18,7 @@ for i in range(len(s)):
 	nt = s[i]
 	if nt == 'A' or nt == 'T':
 		total_AT += 1
-print(int(n), s, total_AT/len(s))
+print(n, s, total_AT/n)
 
 
 """
