@@ -5,17 +5,26 @@
 # Variation: try coding this with a single loop and nested loops
 
 # Note: use 0-based indexing for position and frame (biology uses 1-based)
-
+"""
 dna = 'ATGGCCTTT'
 pos = -1
 while pos < len(dna):
 	for frame in range(3):
 		pos += 1
 		print(pos, frame, dna[pos])
-		
+"""	
 # this one was crazy! BW
 
+# Ian's example:
+
+dna = 'ATGGCCTTT'
+
+for i in range(len(dna)):
+	print(i, i % 3, dna[i])
+	
+	
 """
+
 
 python3 27frame.py
 0 0 A
