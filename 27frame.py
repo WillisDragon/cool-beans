@@ -7,9 +7,16 @@
 # Note: use 0-based indexing for position and frame (biology uses 1-based)
 
 dna = 'ATGGCCTTT'
-
+pos = -1
+while pos < len(dna):
+	for frame in range(3):
+		pos += 1
+		print(pos, frame, dna[pos])
+		
+# this one was crazy! BW
 
 """
+
 python3 27frame.py
 0 0 A
 1 1 T
