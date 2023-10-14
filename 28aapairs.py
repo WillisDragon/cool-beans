@@ -7,8 +7,26 @@
 
 # Hint: if you get stuck for more than 10 minutes, get help
 
+residues = "ACDEFGHIKLMNPQRSTVWY"
 
-"""
+for i in range(len(residues)):
+	for j in range(i+1, len(residues)):
+		print(residues[i], residues[j])
+"""	
+# note: above is half matrix without center ( no AA, CC, etc)
+# below is half matrix with center:
+	
+for i in range(len(residues)):
+	for j in range(i, len(residues)):
+		print(residues[i], residues[j])	
+	
+# below is full matrix with center (top/bottom)
+
+for i in range(len(residues)):
+	for j in range(0, len(residues)):
+		print(residues[i], residues[j])		
+	
+
 python3 28aapairs.py
 A C
 A D
