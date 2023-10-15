@@ -31,7 +31,7 @@ total_GC = 0
 for i in range(w):
 	if seq[i] == 'C' or seq[i] == 'G':
 		total_GC += 1
-print(0, seq[:w], total_GC/w)
+print(0, seq[:w], f'{total_GC/w:.4f}')
 
 for i in range(1, len(seq)-w+1):
 	off = seq[i-1]
@@ -40,10 +40,10 @@ for i in range(1, len(seq)-w+1):
 		total_GC -= 1
 	if on == 'G' or on == 'C':
 		total_GC += 1
-	print(i, seq[i:i+w], total_GC/w)
+	print(i, seq[i:i+w], f'{total_GC/w:.4f}')
+
 
 """
-
 python3 29gcwin.py
 0 ACGACGCAGGA 0.6364
 1 CGACGCAGGAG 0.7273
