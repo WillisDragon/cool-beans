@@ -14,8 +14,17 @@
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
 
-
+for i in range(len(seq)-w):
+	block = seq[i:i+w]
+	total_GC = 0
+	for j in range(len(block)):
+		nt = block[j]
+		if nt == 'G' or nt == 'C':
+			total_GC += 1
+	print(i, block, f'{total_GC/len(block):.4f}')
+					
 """
+
 python3 29gcwin.py
 0 ACGACGCAGGA 0.6364
 1 CGACGCAGGAG 0.7273
