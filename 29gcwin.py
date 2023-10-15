@@ -10,11 +10,11 @@
 # Then 'move' the window by adding 1 letter on one side
 # And subtracting 1 letter from the other side
 # Consider the pros/cons of this algorithm vs. nested loops
-
+"""
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
 
-for i in range(len(seq)-w):
+for i in range(len(seq)-w+1):
 	block = seq[i:i+w]
 	total_GC = 0
 	for j in range(len(block)):
@@ -23,6 +23,25 @@ for i in range(len(seq)-w):
 			total_GC += 1
 	print(i, block, f'{total_GC/len(block):.4f}')
 					
+"""
+seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
+
+w = 11
+total_GC = 0
+for i in range(w):
+	if seq[i] == 'C' or seq[i] == 'G':
+		total_GC += 1
+print(0, seq[:w], total_GC/w)
+
+for i in range(1, len(seq)-w+1):
+	off = seq[i-1]
+	on = seq[i-1 + w]
+	if off == 'G' or off == 'C':
+		total_GC -= 1
+	if on == 'G' or on == 'C':
+		total_GC += 1
+	print(i, seq[i:i+w], total_GC/w)
+
 """
 
 python3 29gcwin.py
