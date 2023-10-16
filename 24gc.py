@@ -7,19 +7,11 @@
 dna = 'ACAGAGCCAGCAGATATACAGCAGATACTAT'
 
 total_GC = 0
-
 for i in range(len(dna)):
 	nt = dna[i]
 	if nt == 'G' or nt == 'C':
 		total_GC += 1
-		
-		
 print(f'{total_GC/len(dna):.2f}')	
-	
-	
-
-
-
 
 
 """
