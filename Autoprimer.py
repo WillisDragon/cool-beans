@@ -8,11 +8,12 @@ for i in range(len(seq)-20):
 		total_GC = 0
 		total_AT = 0
 		oligo = seq[i:j]
-		nt = oligo[i:j]
-		if nt == 'c' or nt == 'g':
-			total_GC += 1
-		if nt == 'a' or nt == 't':
-			total_AT += 1
+		for k in range(len(oligo)):
+			nt = oligo[k]
+			if nt == 'c' or nt == 'g':
+				total_GC += 1
+			if nt == 'a' or nt == 't':
+				total_AT += 1
 		
 		print(oligo, total_GC, total_AT)
 
