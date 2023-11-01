@@ -1,6 +1,6 @@
 # autoFprimer
 
-seq = "agatagcacacgtggatcgatccatcgatcgtgatcgtccagtacggctaattgtacg"
+seq = "ggatggcacacgtggatcgatccatcgatcgtgatcgtccagtacggctaattgtacg"
 
 
 for i in range(len(seq)-20):
@@ -14,8 +14,9 @@ for i in range(len(seq)-20):
 				total_GC += 1
 			if nt == 'a' or nt == 't':
 				total_AT += 1
+				Tm = 64.9 + 41*(total_GC-16.4)/(total_AT + total_GC)
 		
-		print(oligo, total_GC, total_AT)
+		print(oligo, f'{Tm:.1f}')
 
 
 
