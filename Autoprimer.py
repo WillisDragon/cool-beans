@@ -4,13 +4,14 @@ seq = "agatagcacacgtggatcgatccatcgatcgtgatcgtccagtacggctaattgtacg"
 
 
 for i in range(len(seq)-20):
-	for j in range(i+20, i+27):
+	for j in range(i+20, i+28):
+		total_GC = 0
+		total_AT = 0
 		oligo = seq[i:j]
-	total_GC = 0
-	total_AT = 0
-		if oligo[j] == 'c' or oligo[j] == 'g':
+		nt = oligo[i:j]
+		if nt == 'c' or nt == 'g':
 			total_GC += 1
-		if oligo[j] == 'a' or oligo[j] == 't':
+		if nt == 'a' or nt == 't':
 			total_AT += 1
 		
 		print(oligo, total_GC, total_AT)
