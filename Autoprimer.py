@@ -2,11 +2,13 @@
 
 seq = "ggatggcacacgtggatcgatccatcgatcgtgatcgtccagtacggctaattgtacg"
 
-
-for i in range(len(seq)-20):
-	for j in range(i+20, i+28):
+minlen = 20
+maxlen = 27
+for i in range(len(seq)-minlen):
+	for j in range(i+minlen, i+maxlen+1):
 		GC_count = 0
 		AT_count = 0
+		#make oligo
 		oligo = seq[i:j]
 		for k in range(len(oligo)):
 			nt = oligo[k]
@@ -14,9 +16,10 @@ for i in range(len(seq)-20):
 				GC_count += 1
 			if nt == 'a' or nt == 't':
 				AT_count += 1
-				Tm = 64.9 + 41*(GC_count - 16.4)/(AT_count + GC_count)
-				if Tm >= 57 and Tm <=60:
-					print(oligo, f'{Tm:.1f}', f'{GC_count/len(oligo):.2f}', len(oligo), GC_count, AT_count)
+		# calc Tm
+		Tm = 64.9 + 41*(GC_count - 16.4)/(AT_count + GC_count)
+		if Tm >= 57 and Tm <=60:
+			print(oligo, f'{Tm:.1f}', f'{GC_count/len(oligo):.2f}', len(oligo), GC_count, AT_count)
 
 
 
