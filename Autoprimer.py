@@ -1,6 +1,6 @@
 # autoFprimer
 
-seq = "ggatggcacacgtggatcgatccatcgatattatattatagcgccgtgatcgaaaaatccagtacttttggctaattgtacg"
+seq = "ggatggggcacgtggatcgatccatcgatattatattatagcgccgtgatcgttttttccagtacttttggctaattgtacg"
 
 minlen = 20
 maxlen = 27
@@ -27,15 +27,20 @@ for i in range(len(seq)-minlen):
 			if threent == 'c' or threent == 'g':
 				threeGC_count += 1
 # find/count substrings
-		badsubstring = oligo.find("aaaaa")
-		
+		aaaaaaSS = oligo.find("aaaaaa")
+		ttttttSS = oligo.find("tttttt")
+		ggggSS = oligo.find("gggg")
+		ccccSS = oligo.find("cccc")
 		
 # calc Tm
 		Tm = 64.9 + 41*(GC_count - 16.4)/(AT_count + GC_count)
 		if Tm >= minTm and Tm <= maxTm:
 			if threeGC_count/5 == 0.6:	
-				if badsubstring == -1:
-					print(oligo, f'{Tm:.1f}', f'{GC_count/len(oligo):.2f}')
+				if aaaaaaSS == -1:
+					if ttttttSS == -1:
+						if ggggSS == -1:
+							if ccccSS == -1:
+								print(oligo, f'{Tm:.1f}', f'{GC_count/len(oligo):.2f}', len(oligo))
 
 
 
