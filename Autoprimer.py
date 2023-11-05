@@ -26,11 +26,16 @@ for i in range(len(seq)-minlen):
 			threent = threeprime[l]
 			if threent == 'c' or threent == 'g':
 				threeGC_count += 1
+# find/count substrings
+		badsubstring = oligo.find("aaaaa")
+		
+		
 # calc Tm
 		Tm = 64.9 + 41*(GC_count - 16.4)/(AT_count + GC_count)
 		if Tm >= minTm and Tm <= maxTm:
 			if threeGC_count/5 == 0.6:	
-				print(oligo, f'{Tm:.1f}', f'{GC_count/len(oligo):.2f}')
+				if badsubstring == -1:
+					print(oligo, f'{Tm:.1f}', f'{GC_count/len(oligo):.2f}')
 
 
 
