@@ -1,11 +1,11 @@
 # autoFprimer
 
-seq = "ggatggcacacgtggatcgatccatcgatcgtgatcgtccagtacggctaattgtacg"
+seq = "ggatggcacacgtggatcgatccatcgatattatattatagcgccgtgatcgaaaaatccagtacttttggctaattgtacg"
 
 minlen = 20
 maxlen = 27
 minTm = 57
-maxTm = 59
+maxTm = 60
 for i in range(len(seq)-minlen):
 	for j in range(i+minlen, i+maxlen+1):
 		GC_count = 0
@@ -14,14 +14,23 @@ for i in range(len(seq)-minlen):
 		oligo = seq[i:j]
 		for k in range(len(oligo)):
 			nt = oligo[k]
+			length = len(oligo)
 			if nt == 'c' or nt == 'g':
 				GC_count += 1
 			if nt == 'a' or nt == 't':
 				AT_count += 1
+# calc 3' GC
+		threeGC_count = 0
+		threeprime = oligo[length - 5:]
+		for l in range(len(threeprime)):
+			threent = threeprime[l]
+			if threent == 'c' or threent == 'g':
+				threeGC_count += 1
 # calc Tm
 		Tm = 64.9 + 41*(GC_count - 16.4)/(AT_count + GC_count)
 		if Tm >= minTm and Tm <= maxTm:
-			print(oligo, f'{Tm:.1f}', f'{GC_count/len(oligo):.2f}', len(oligo), GC_count, AT_count)
+			if threeGC_count/5 == 0.6:	
+				print(oligo, f'{Tm:.1f}', f'{GC_count/len(oligo):.2f}')
 
 
 
