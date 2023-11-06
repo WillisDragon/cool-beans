@@ -1,10 +1,8 @@
 # autoFprimer
-
-seq = "ggatggggcacgtggatcgatccatcgatattatattatagcgccgtgatcgttttttccagtacttttggctaattgtacg"
-
+seq = "ggatggggcacgtggatcgatccatcgatattatattatagcgccgtgatcttttttccagtacttttggctaattgtacg"
 minlen = 20
 maxlen = 27
-minTm = 57
+minTm = 55
 maxTm = 60
 for i in range(len(seq)-minlen):
 	for j in range(i+minlen, i+maxlen+1):
@@ -27,20 +25,24 @@ for i in range(len(seq)-minlen):
 			if threent == 'c' or threent == 'g':
 				threeGC_count += 1
 # find/count substrings
+		SScount = oligo.count("tttttt") + oligo.count("gggg") + oligo.count("aaaaaa") + oligo.count("cccc") + oligo.count("atatata") + oligo.count("agagaga") + oligo.count("acacaca") + oligo.count("tatatat") + oligo.count("tgtgtgt") + oligo.count("tctctct") + oligo.count("gagagag") + oligo.count("gtgtgtg") + oligo.count("gcgcgcg") + oligo.count("cacacac") + oligo.count("ctctctc") + oligo.count("cgcgcgc")
+		GCcount = oligo.count("gg") + oligo.count("cc") + oligo.count("gc") + oligo.count("cg")	
+# calc Tm
+		Tm = 64.9 + 41*(GC_count - 16.4)/(AT_count + GC_count)
+		if Tm >= minTm and Tm <= maxTm:
+			if threeGC_count/5 == 0.6:
+				if SScount == 0:
+					if GCcount >= 3:
+						if GCcount <6:
+							print(oligo, "Tm:", f'{Tm:.1f}', "GC:", f'{GC_count/len(oligo):.2f}', "size:", len(oligo))
+
+"""
 		aaaaaaSS = oligo.find("aaaaaa")
 		ttttttSS = oligo.find("tttttt")
 		ggggSS = oligo.find("gggg")
 		ccccSS = oligo.find("cccc")
-		
-# calc Tm
-		Tm = 64.9 + 41*(GC_count - 16.4)/(AT_count + GC_count)
-		if Tm >= minTm and Tm <= maxTm:
-			if threeGC_count/5 == 0.6:	
-				if aaaaaaSS == -1:
-					if ttttttSS == -1:
-						if ggggSS == -1:
-							if ccccSS == -1:
-								print(oligo, f'{Tm:.1f}', f'{GC_count/len(oligo):.2f}', len(oligo))
+
+if BScount == 0:
 
 
 
@@ -49,17 +51,6 @@ for i in range(len(seq)-minlen):
 
 
 
-
-
-
-
-
-
-
-
-
-
-"""
 w = 5
 total_GC = 0
 for i in range(10, 15):
