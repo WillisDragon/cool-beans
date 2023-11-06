@@ -26,7 +26,7 @@ for i in range(len(seq)-minlen):
 				threeGC_count += 1
 # find/count substrings
 		SScount = oligo.count("tttttt") + oligo.count("gggg") + oligo.count("aaaaaa") + oligo.count("cccc") + oligo.count("atatata") + oligo.count("agagaga") + oligo.count("acacaca") + oligo.count("tatatat") + oligo.count("tgtgtgt") + oligo.count("tctctct") + oligo.count("gagagag") + oligo.count("gtgtgtg") + oligo.count("gcgcgcg") + oligo.count("cacacac") + oligo.count("ctctctc") + oligo.count("cgcgcgc")
-		GCcount = oligo.count("gg") + oligo.count("cc") + oligo.count("gc") + oligo.count("cg")	
+		GCcount = oligo.count("gg") + oligo.count("cc") + oligo.count("gc") + oligo.count("cg") - oligo.count("ggg") + oligo.count("ccg") - oligo.count("gcg") - oligo.count("cgg") - oligo.count("ggc") - oligo.count("ccc") - oligo.count("gcc") - oligo.count("cgc") - oligo.count("ggc")
 # calc Tm
 		Tm = 64.9 + 41*(GC_count - 16.4)/(AT_count + GC_count)
 		if Tm >= minTm and Tm <= maxTm:
